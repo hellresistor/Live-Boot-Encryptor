@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # ENCRYPT the BOOT ON TAILS LIVE USB
-# Ver. 2.1
+# Ver. 2.2
 # by. Hellresistor
 #
 counter(){
@@ -63,12 +63,12 @@ sleep 1
 fdisk -l
 sleep 1
 echo
-read -p "What is your Disk/USB to be Encrypted? (ex: /dev/sdb1): " MyDisk && echo
+read -rp "What is your Disk/USB to be Encrypted? (ex: /dev/sdb1): " MyDisk && echo
 echo -n "Mounting Selected Device --> $MyDisk "
-mount $MyDisk /mnt/
+mount "$MyDisk" /mnt/
 echo && sleep 1 && echo "Drive Mounted on /mnt/" && echo && sleep 1
 echo && echo && echo "Checking Tails as a CLEAN installation..."
-TAILSS=/mnt/syslinux/menu.cfg
+TAILSS="/mnt/syslinux/menu.cfg"
 if grep -qF 'menu master passwd' "$TAILSS";
 then
 echo && sleep 1 && echo "Has been touched ..." && echo && sleep 1 && echo "Put it who it should be ..." && sleep 1 && echo && pass && echo && sleep 1 && echo && sleep 1 && echo && rollback && echo && sleep 1 && echo && install
@@ -80,19 +80,19 @@ fi
 pass(){
 echo "Starting the party..."
 echo && echo && sleep 1
-echo "Insere a password? (Encrypta em SHA-512):" && echo
+echo "Insert a password? (Will encrypt em SHA-512):" && echo
 mkpasswd -m sha-512
 echo && sleep 1 && echo
 echo "Copia/Copy STRING COMPLET...JA/NOW !!" && sleep 1
 echo "COLA/PASTE the String and compare (You Win a Big SHIT.... If you IGNORE THIS !!!)"
-read MyEncrPass
+read -rp MyEncrPass
 echo && echo "PASSWORD ENCRYPTED INTO SHA-512" && echo && echo && sleep 2
 }
 
 install(){
 echo "Go into to matters ....." && echo && sleep 1
 echo "config EFI..." && sleep 1
-MyTailsEfi=/mnt/EFI/BOOT/
+MyTailsEfi="/mnt/EFI/BOOT/"
 sed -i "/prompt 0/i menu master passwd $MyEncrPass" $MyTailsEfi/menu.cfg
 sed -i '/prompt 0/a noescape 1' $MyTailsEfi/menu.cfg
 sed -i '/noescape 1/a allowoptions 0' $MyTailsEfi/menu.cfg
@@ -139,10 +139,10 @@ umount /mnt/
 echo "TAILS BOOT ENCRIPTED !!!"
 sleep 1
 echo
-for i in {1..15}; do
- echo "NOW ........ Don´t FORGOT THE PASSWORD to That Device"
+for i in {1..5}; do
+ echo "NOW ........ Don´t FORGOT THE PASSWORD to That Device. Remaining $i seconds"
 done
-echo && echo && sleep 2 && echo && echo "A Reiniciar...." && counter && reboot
+echo && echo && echo "A Reiniciar...." && counter && reboot
 }
 
 check
@@ -150,4 +150,4 @@ tag
 inicio
 fim
 
-exiit 0
+exit 0
