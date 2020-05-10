@@ -23,6 +23,4 @@ Only use to studing and understanding ;)
  $ ./Live-Boot-Encryptor.sh
 
 ### Contrib
-BTC: 13Qs5NQQNBGn4eQBnVXVLvN6kqSzm2rcsb
-
-BCNA: B73RRFVtndfPRNSgSQg34yqz4e9eWyKRSv
+Bitcanna: B73RRFVtndfPRNSgSQg34yqz4e9eWyKRSv
