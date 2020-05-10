@@ -43,7 +43,6 @@ Required Things:
 1x USB Stick WITH Tails Live Installed
 
 Donate, If you want!
-Bitcoin (BTC): 13Qs5NQQNBGn4eQBnVXVLvN6kqSzm2rcsb
 Bitcanna (BCNA): B73RRFVtndfPRNSgSQg34yqz4e9eWyKRSv
 EOF
 counter
